@@ -1,0 +1,33 @@
+awshost-monitoring:
+  aws_access_key_id: key-id
+  aws_secret_access_key: secret-key
+  alarms:
+    CPU Utilization:
+      metric: CPUUtilization
+      namespace: AWS/EC2
+      statistic: Average
+      comparison: ">="
+      threshold: 75
+      period: 300
+      alarm_actions:
+        - arn:aws:sns:us-east-1:1111111:myalerting-action
+    HD Utilization:
+      metric: DiskSpaceUtilization
+      namespace: System/Linux
+      statistic: Average
+      comparison: ">="
+      threshold: 80
+      period: 300
+      alarm_actions:
+        - arn:aws:sns:exmaple-region:example-topic-id:example-topic-name
+    Memory Utilization:
+      metric: MemoryUtilization
+      namespace: System/Linux
+      statistic: Average
+      comparison: ">="
+      threshold: 95
+      period: 300
+      alarm_actions:
+        - arn:aws:sns:exmaple-region:example-topic-id:example-topic-name
+  alarm_actions:
+    - arn:aws:sns:exmaple-region:example-topic-id:example-topic-name
